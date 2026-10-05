@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pollos Cochabamba | Sabor que nos une</title>
-    <link rel="stylesheet" href="css\estilos.css">
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <header>
-        <img src="img\logo.jpg"
-             alt="Logo de Pollos Cochabamba">
+        <img src="img/logo-pollos-cochabamba.png" alt="Logo de Pollos Cochabamba">
 
-        <nav>
-            <a href="#ini">Inicio</a>
-            <a href="#menu">Menú</a>
-            <a href="#promo">Promociones</a>
-            <a href="#noso">Nosotros</a>
-        </nav>
+        <!-- Menú desplegable interactivo exclusivo con details/summary (Sin JS, sin button, sin div) -->
+        <details class="menu-desplegable">
+            <summary>Menú &#9660;</summary>
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#menu">Menú</a>
+                <a href="#promociones">Promociones</a>
+                <a href="#noso">Nosotros</a>
+            </nav>
+        </details>
     </header>
-
 
     <main>
         <section id="inicio">
@@ -34,31 +40,27 @@
                     de nuestro pollo acompañado de papas y bebidas.
                 </p>
 
-            <img src="img\combo-duo.jpg"
-             alt="Combo Dúo de Pollos Cochabamba">
+                <img src="img/combo-duo.jpg" alt="Combo Dúo de Pollos Cochabamba">
 
-            <p>
-               <mark>58 Bs.</mark>
-            </p>
+                <p>
+                   <mark>58 Bs.</mark>
+                </p>
             </article>
         </section>
 
         <section id="menu">
             <h2>Nuestro menú</h2>
             <p>
-                Descubre algunas de las opciones de
-                <strong>Pollos Cochabamba</strong>.
+                Descubre algunas de las opciones de <strong>Pollos Cochabamba</strong>.
             </p>
             <article class="producto">
                 <h3>Combo Balde</h3>
                 <p>
-                    Una opción para compartir con diferentes
-                    cantidades de presas de pollo.
+                    Una opción para compartir con diferentes cantidades de presas de pollo.
                 </p>
-                <img src="img\promo.jpg"
-                     alt="Menú de Pollos Cochabamba con diferentes combos">
+                <img src="img/promo.jpg" alt="Menú de Pollos Cochabamba con diferentes combos">
+                
                 <dl>
-
                     <dt>Combo Balde 8 presas</dt>
                     <dd>Incluye pollo, papas, arroz, bebida, salsas y llajua.</dd>
 
@@ -70,11 +72,10 @@
             <article class="producto">
                 <h3>Combos individuales</h3>
                 <p>
-                    Opciones individuales con diferentes piezas
-                    y acompañamientos.
+                    Opciones individuales con diferentes piezas y acompañamientos.
                 </p>
-                <img src="img\menu2.jpg" 
-                     alt="Menú individual">
+                <img src="img/menu2.jpg" alt="Menú individual">
+                
                 <dl>
                     <dt>Pierna + entrepierna</dt>
                     <dd>Combo individual de pollo acompañado de guarniciones.</dd>
@@ -91,61 +92,61 @@
             </article>
         </section>
 
-
-
-        <section id="promo">
+        <section id="promociones">
             <h2>Promociones</h2>
-
-
             <p>
-                Disfruta nuestras opciones para compartir
-                y aprovecha nuestras promociones.
+                Disfruta nuestras opciones para compartir y aprovecha nuestras promociones.
             </p>
 
             <article class="promocion">
                 <h3>Combo Balde</h3>
-                <img src="img\dosporuno.jpg"
-                alt="Promocion de precio economico. Pollos Cochabamba">
+                <img src="img/dosporuno.jpg" alt="Promoción de precio económico. Pollos Cochabamba">
                 <p>
-                    <mark>2 platos de 1/8 de pollo</mark> para compartir a precio economico.
+                    <mark>2 platos de 1/8 de pollo</mark> para compartir a precio económico.
                 </p>
-
                 <p>
-                    Consulta la disponibilidad y condiciones de
-                    cada promoción.
+                    Consulta la disponibilidad y condiciones de cada promoción.
                 </p>
             </article>
         </section>
 
-
-         <section id="noso">
+        <section id="noso">
             <h2>Conoce Pollos Cochabamba</h2>
             <p>
                 Una propuesta dedicada a ofrecer una experiencia deliciosa para los amantes del pollo.
             </p>
 
-            <article class="info-bloque">
-                <h3>Sobre nosotros</h3>
+            <details>
+                <summary>Conoce más sobre nosotros</summary>
                 <p>
                     Nuestra página presenta información sobre el menú, promociones y diferentes opciones para nuestros clientes.
                 </p>
-            </article>
+            </details>
 
-            <article class="info-bloque">
-                <h3>Horarios de atención</h3>
+            <details>
+                <summary>Horarios de atención</summary>
+                <p>Atención durante la semana:</p>
                 <p>
-                    Atención durante la semana:
                     <time datetime="09:00">09:00</time> - <time datetime="22:00">22:00</time>
                 </p>
-            </article>
+            </details>
         </section>
     </main>
 
     <footer>
+        <section class="redes-sociales">
+            <p><strong>Síguenos en nuestras redes sociales:</strong></p>
+            <p class="iconos-redes">
+                <a href="https://www.facebook.com" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com" target="_blank">TikTok</a>
+                <a href="https://wa.me/59162437333" target="_blank">WhatsApp</a>
+            </p>
+        </section>
         <p>&copy; 2026 Pollos Cochabamba</p>
         <p>
             <abbr title="Preguntas frecuentes">FAQ</abbr> | Información y contacto
         </p>
-    </footer>    
+    </footer>
 </body>
 </html>

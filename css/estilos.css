@@ -1,5 +1,5 @@
 /* ==========================================================================
-   RESET Y VARIABLES DE COLOR
+   VARIABLES Y CONFIGURACIÓN FLUIDA SINO MEDIA QUERIES
    ========================================================================== */
 :root {
     --rojo-principal: #D32F2F;
@@ -12,7 +12,6 @@
     --fondo-gris: #F9F9F9;
     --blanco: #FFFFFF;
     --sombra: 0 4px 15px rgba(0, 0, 0, 0.1);
-    --sombra-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
     --borde-radio: 12px;
 }
 
@@ -23,339 +22,284 @@
 }
 
 body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: var(--fondo-gris);
     color: var(--texto-oscuro);
     line-height: 1.6;
+    /* Tamaño tipográfico fluido con clamp() */
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
 }
 
 /* ==========================================================================
-   ENCABEZADO Y NAVEGACIÓN
+   TÍTULOS CON FUENTE DE GOOGLE FONTS (POPPINS)
+   ========================================================================== */
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--rojo-principal);
+    font-weight: 800;
+}
+
+h1 {
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    text-align: center;
+    margin-bottom: 0.8rem;
+}
+
+h2 {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    border-bottom: 4px solid var(--amarillo-brillante);
+}
+
+h3 {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+}
+
+/* ==========================================================================
+   MAQUETACIÓN CLÁSICA PURA (SIN FLEXBOX / SIN GRID)
    ========================================================================== */
 header {
     background-color: var(--blanco);
     border-bottom: 4px solid var(--amarillo-brillante);
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    padding: clamp(0.6rem, 2vw, 1.2rem) clamp(1rem, 5vw, 3rem);
+    display: block;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 header img {
-    max-height: 65px;
+    display: inline-block;
+    vertical-align: middle;
+    max-height: clamp(35px, 6vw, 55px);
     width: auto;
-    object-fit: contain;
 }
 
-nav {
-    display: flex;
-    gap: 1.5rem;
+/* MENÚ DESPLEGABLE CON DETAILS/SUMMARY NATIVO (100% SIN JS, SIN DIV, SIN BUTTON) */
+details.menu-desplegable {
+    display: inline-block;
+    vertical-align: middle;
+    float: right;
+    position: relative;
+    margin-top: 5px;
 }
 
-nav a {
+details.menu-desplegable > summary {
+    list-style: none;
+    background-color: var(--rojo-principal);
+    color: var(--blanco);
+    font-weight: 700;
+    padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.8rem, 2vw, 1.4rem);
+    border-radius: 25px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+}
+
+details.menu-desplegable > summary::-webkit-details-marker {
+    display: none;
+}
+
+details.menu-desplegable[open] > summary {
+    background-color: var(--rojo-oscuro);
+}
+
+details.menu-desplegable > nav {
+    position: absolute;
+    right: 0;
+    top: 110%;
+    background-color: var(--blanco);
+    width: clamp(160px, 40vw, 220px);
+    border-radius: 8px;
+    box-shadow: var(--sombra);
+    border: 2px solid var(--amarillo-brillante);
+    z-index: 1000;
+}
+
+details.menu-desplegable > nav a {
+    display: block;
     text-decoration: none;
     color: var(--texto-oscuro);
     font-weight: 700;
-    font-size: 1.05rem;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    transition: all 0.3s ease;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid #EEE;
 }
 
-nav a:hover {
+details.menu-desplegable > nav a:hover {
     background-color: var(--rojo-principal);
     color: var(--blanco);
 }
 
-/* ==========================================================================
-   CONTENIDO PRINCIPAL Y SECCIONES
-   ========================================================================== */
+/* CONTENEDOR PRINCIPAL Y ANCHO FLUIDO SIN MEDIA QUERIES */
 main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
+    width: clamp(280px, 92%, 1000px);
+    margin: 1.5rem auto;
 }
 
 section {
     background-color: var(--blanco);
     border-radius: var(--borde-radio);
-    padding: 2.5rem;
-    margin-bottom: 2.5rem;
+    padding: clamp(1rem, 4vw, 2.5rem);
+    margin-bottom: 2rem;
     box-shadow: var(--sombra);
-}
-
-h1, h2, h3 {
-    color: var(--rojo-principal);
-    font-weight: 800;
-}
-
-h2 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    position: relative;
-    display: inline-block;
-}
-
-h2::after {
-    content: '';
     display: block;
-    width: 50%;
-    height: 4px;
-    background-color: var(--amarillo-brillante);
-    margin-top: 6px;
-    border-radius: 2px;
 }
 
-section > p {
-    color: var(--texto-suave);
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-}
-
-/* ==========================================================================
-   SECCIÓN INICIO Y PROMO DESTACADA
-   ========================================================================== */
-#inicio h1 {
-    font-size: 2.5rem;
-    text-align: center;
-    color: var(--rojo-principal);
-}
-
-#inicio > p {
-    text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+article {
+    display: block;
+    margin: 1.5rem auto;
 }
 
 #inicio article {
     background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CC 100%);
     border: 2px solid var(--amarillo-brillante);
     border-radius: var(--borde-radio);
-    padding: 2rem;
+    padding: 1.5rem;
     text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
+    width: clamp(250px, 80%, 550px);
 }
 
-#inicio article h2 {
-    font-size: 1.8rem;
-    color: var(--rojo-principal);
-    margin-bottom: 0.8rem;
-}
-
-#inicio article img {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    border-radius: 8px;
-    margin: 1.2rem 0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-mark {
-    background-color: var(--rojo-principal);
-    color: var(--blanco);
-    padding: 0.4rem 1.2rem;
-    border-radius: 30px;
-    font-size: 1.4rem;
-    font-weight: bold;
-    display: inline-block;
-}
-
-/* ==========================================================================
-   SECCIÓN MENÚ Y TARJETAS DE PRODUCTO
-   ========================================================================== */
 .producto {
     background: var(--blanco);
     border: 1px solid #E0E0E0;
     border-radius: var(--borde-radio);
     padding: 1.5rem;
-    margin-bottom: 2rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
 }
 
-.producto:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--sombra-hover);
+/* CONTROL FLUIDO DE IMÁGENES */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+    border-radius: 8px;
 }
 
-.producto h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.producto img {
-    width: 100%;
-    max-height: 350px;
+#inicio article img,
+.producto img,
+.promocion img {
+    width: clamp(200px, 60%, 320px);
+    max-height: 200px;
     object-fit: cover;
-    border-radius: 8px;
-    margin: 1rem 0;
 }
 
-/* Lista de Definiciones (Precios y Descripción) */
+mark {
+    background-color: var(--rojo-principal);
+    color: var(--blanco);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* MAQUETACIÓN NATIVA DE LISTA DE DEFINICIÓN (CERO ERRORES W3C Y CERO FLEX/GRID) */
 dl {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.8rem 1.5rem;
-    align-items: baseline;
+    display: block;
     background-color: var(--fondo-gris);
-    padding: 1.2rem;
+    padding: 1rem;
     border-radius: 8px;
+    margin-top: 1rem;
+    text-align: left;
 }
 
 dt {
     font-weight: 700;
     color: var(--azul-acento);
-    font-size: 1.05rem;
+    margin-top: 0.8rem;
+    display: block;
+}
+
+dt:first-child {
+    margin-top: 0;
 }
 
 dd {
     color: var(--texto-suave);
-    margin: 0;
+    margin-left: 0;
+    margin-bottom: 0.4rem;
+    display: block;
 }
 
-/* ==========================================================================
-   SECCIÓN PROMOCIONES
-   ========================================================================== */
-.promocion {
-    background-color: var(--amarillo-suave);
-    border-left: 6px solid var(--rojo-principal);
-    border-radius: 0 var(--borde-radio) var(--borde-radio) 0;
-    padding: 1.8rem;
-    text-align: center;
-}
-
-.promocion img {
-    max-width: 500px;
-    width: 100%;
-    border-radius: 8px;
-    margin: 1rem 0;
-}
-
-/* ==========================================================================
-   SECCIÓN NOSOTROS & DETAILS
-   ========================================================================== */
+/* INTERACTIVIDAD CON DETAILS/SUMMARY NATIVOS EN SECCIÓN NOSOTROS */
 details {
     background-color: var(--fondo-gris);
     border-radius: 8px;
-    padding: 1rem;
+    padding: 0.8rem 1.2rem;
     margin-bottom: 1rem;
     border: 1px solid #E0E0E0;
-    cursor: pointer;
+    display: block;
 }
 
 summary {
     font-weight: 700;
     color: var(--rojo-principal);
-    font-size: 1.1rem;
-    outline: none;
+    cursor: pointer;
 }
 
 details[open] summary {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
 }
 
-details p {
-    color: var(--texto-suave);
+.promocion {
+    background-color: var(--amarillo-suave);
+    border-left: 6px solid var(--rojo-principal);
+    border-radius: 0 var(--borde-radio) var(--borde-radio) 0;
+    padding: 1.5rem;
+    text-align: center;
 }
 
 time {
     font-weight: bold;
     color: var(--azul-acento);
     background-color: var(--blanco);
-    padding: 0.2rem 0.6rem;
+    padding: 0.2rem 0.5rem;
     border-radius: 4px;
     border: 1px solid #CCC;
 }
 
 /* ==========================================================================
-   PIE DE PÁGINA (FOOTER)
+   FOOTER Y REDES SOCIALES
    ========================================================================== */
 footer {
     background-color: var(--rojo-principal);
     color: var(--blanco);
     text-align: center;
     padding: 2rem 1rem;
-    margin-top: 3rem;
+    display: block;
 }
 
-footer p {
-    margin: 0.4rem 0;
+.redes-sociales {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.redes-sociales p {
+    color: var(--amarillo-brillante);
+    margin-bottom: 0.5rem;
+}
+
+.iconos-redes a {
+    display: inline-block;
+    color: var(--blanco);
+    background-color: rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0.4rem 0.8rem;
+    margin: 0.2rem;
+    border-radius: 15px;
+}
+
+.iconos-redes a:hover {
+    background-color: var(--amarillo-brillante);
+    color: var(--texto-oscuro);
 }
 
 abbr {
     color: var(--amarillo-brillante);
     text-decoration: underline dotted;
-    cursor: help;
-}
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-/* Logo en el encabezado */
-header img {
-    max-height: 50px;
-    width: auto;
-    object-fit: contain;
-}
-
-/* Imagen de la sección de Inicio (Combo Dúo) */
-#inicio article img {
-    max-width: 280px;  /* Controla el ancho máximo */
-    max-height: 200px;  /* Controla la altura máxima */
-    object-fit: cover;  /* Mantiene la proporción sin deformar la foto */
-    border-radius: 8px;
-    margin: 1rem auto;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-}
-
-/* Imágenes del Menú (Combo Balde, Combos individuales) */
-.producto img {
-    max-width: 320px;  /* Ancho ideal para tarjetas */
-    max-height: 200px;  /* Altura fija máxima para que no se vean gigantes */
-    width: 100%;
-    object-fit: cover;  /* Recorta suavemente la imagen para adaptarse */
-    border-radius: 8px;
-    margin: 1rem auto;
-    display: block;
-}
-
-/* Imagen de Promociones */
-.promocion img {
-    max-width: 300px;
-    max-height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin: 1rem auto;
-}
-
-/* Alineación centrada de los productos */
-.producto {
-    background: var(--blanco);
-    border: 1px solid #E0E0E0;
-    border-radius: var(--borde-radio);
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    text-align: center; /* Centra la imagen y los títulos */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Lista de detalles alineada a la izquierda */
-dl {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.8rem 1.5rem;
-    align-items: baseline;
-    text-align: left;
-    background-color: var(--fondo-gris);
-    padding: 1.2rem;
-    border-radius: 8px;
-    margin-top: 1rem;
 }
